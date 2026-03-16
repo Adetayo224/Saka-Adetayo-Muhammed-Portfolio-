@@ -596,6 +596,114 @@
             border-color: #1e3c72;
         }
 
+
+
+         /* Work Gallery Section */
+        .gallery {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #f0f0f0;
+            position: relative;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.1);
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-content h3 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .gallery-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .gallery-content .date {
+            color: #64b5f6;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .load-more-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .load-more-btn {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .load-more-btn:hover {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .load-more-btn.hidden {
+            display: none;
+        }
+
+        
+
         /* Contact Section */
         .contact {
             background: linear-gradient(135deg, #1e3c72, #2a5298);
@@ -1496,7 +1604,139 @@
         </div>
     </div>
 
-    <script>
+     <script>
+        // ========================================
+        // WORK GALLERY CONFIGURATION
+        // ========================================
+        // TO ADD NEW GALLERY ITEMS: Just add a new object to this array
+        // Copy-paste format: { image: "URL", title: "Title", description: "Description", date: "Month Year" }
+        
+        const galleryItems = [
+            {
+                image: "https://i.imgur.com/placeholder1.jpg",
+                title: "Hack4Livestock Hackathon Win",
+                description: "First place victory with AI-powered cattle intrusion detection system at the 2025 Hack4Livestock competition.",
+                date: "January 2025"
+            },
+            {
+                image: "https://i.imgur.com/placeholder2.jpg",
+                title: "ROS2 Robot Demonstration",
+                description: "Live demonstration of office file arrangement robot using SLAM and Gazebo simulation at LAUTECH.",
+                date: "December 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder3.jpg",
+                title: "Robotics Workshop at LAUTECH",
+                description: "Teaching fundamentals of embedded systems and Arduino programming to engineering students.",
+                date: "November 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder4.jpg",
+                title: "234 AI Hackathon Victory",
+                description: "First position at University of Ibadan's AI hackathon, showcasing innovative solutions in artificial intelligence.",
+                date: "October 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder5.jpg",
+                title: "RAIN-IN Leadership",
+                description: "Leading the Robotics and Artificial Intelligence Innovator Network at LAUTECH, fostering innovation.",
+                date: "September 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder6.jpg",
+                title: "Gold Medal Research Exhibition",
+                description: "Awarded Gold Medal at LAUTECH International Research and Discovery Exhibition for robotics research.",
+                date: "August 2024"
+            },
+            // ===== HIDDEN ITEMS (shown after clicking Load More) =====
+            {
+                image: "https://i.imgur.com/placeholder7.jpg",
+                title: "Facial Recognition System Demo",
+                description: "Demonstrating embedded vision attendance system using Edge Impulse and Raspberry Pi.",
+                date: "July 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder8.jpg",
+                title: "SPE Outreach Program",
+                description: "Leading STEM education initiative at secondary schools across Ogbomoso as SPE President.",
+                date: "June 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder9.jpg",
+                title: "Agricultural Robot Testing",
+                description: "Field testing of ripe tomato harvesting robot with computer vision capabilities.",
+                date: "May 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder10.jpg",
+                title: "3D Printing Workshop",
+                description: "Conducting hands-on workshop on additive manufacturing and CAD design for students.",
+                date: "April 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder11.jpg",
+                title: "Hand Gesture Robot Control",
+                description: "Showcasing intuitive human-robot interaction through gesture-based control system.",
+                date: "March 2024"
+            },
+            {
+                image: "https://i.imgur.com/placeholder12.jpg",
+                title: "Team Collaboration",
+                description: "Working with fellow researchers on autonomous systems projects at CEST LAUTECH.",
+                date: "February 2024"
+            }
+        ];
+
+        // Gallery Display Logic (Don't edit unless you know what you're doing)
+        let itemsToShow = 6;
+        const itemsPerLoad = 6;
+
+        function loadGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            
+            galleryGrid.innerHTML = '';
+            
+            const itemsToDisplay = galleryItems.slice(0, itemsToShow);
+            
+            itemsToDisplay.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.style.animationDelay = `${index * 0.1}s`;
+                
+                galleryItem.innerHTML = `
+                    <div class="gallery-image">
+                        <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/400x300/1e3c72/ffffff?text=Image'">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                        <span class="date">${item.date}</span>
+                    </div>
+                `;
+                
+                galleryGrid.appendChild(galleryItem);
+            });
+            
+            if (itemsToShow >= galleryItems.length) {
+                loadMoreBtn.classList.add('hidden');
+            } else {
+                loadMoreBtn.classList.remove('hidden');
+            }
+        }
+
+        function loadMoreGallery() {
+            itemsToShow += itemsPerLoad;
+            loadGallery();
+        }
+
+        // Load gallery on page load
+        window.addEventListener('load', loadGallery);
+
+        // ========================================
+        // END OF GALLERY CONFIGURATION
+        // ========================================
+
         // Certificate Modal Functions
         function openCertModal(certId) {
             const modal = document.getElementById('certificateModal');
